@@ -1,4 +1,4 @@
-﻿namespace CP40
+namespace CP40
 {
     internal class Program
     {
@@ -27,7 +27,7 @@
             for (int i = 0; i < 200_000; i++)
             {
                 _ = new byte[50];
-            } 
+            }
 
             long allocatedAfterSmall = GC.GetTotalAllocatedBytes();
 
@@ -63,6 +63,8 @@
             {
                 largeObjects[i] = new byte[90_000];
             }
+
+            GC.Collect(2, GCCollectionMode.Forced, true, false);
 
             long allocatedAfterLarge = GC.GetTotalAllocatedBytes();
 
